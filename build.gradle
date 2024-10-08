@@ -30,11 +30,19 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    // WebSocket
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    // sockjs
+    implementation 'org.webjars:sockjs-client:1.5.1'
+    // stomp
+    implementation 'org.webjars:stomp-websocket:2.3.4'
+    implementation 'com.fasterxml.uuid:java-uuid-generator:4.3.0'
     // jasypt
     implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5'
     //jwt
     implementation 'io.jsonwebtoken:jjwt-api:0.12.3'
     implementation 'io.jsonwebtoken:jjwt-impl:0.12.3'
+
     implementation 'io.jsonwebtoken:jjwt-jackson:0.12.3'
     // lombok
     compileOnly 'org.projectlombok:lombok'

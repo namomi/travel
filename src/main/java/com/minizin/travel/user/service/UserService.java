@@ -6,6 +6,8 @@ import com.minizin.travel.user.domain.enums.LoginType;
 import com.minizin.travel.user.domain.enums.UserErrorCode;
 import com.minizin.travel.user.domain.exception.CustomUserException;
 import com.minizin.travel.user.domain.repository.UserRepository;
+
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -83,6 +85,17 @@ public class UserService {
         userEntity.setNickname(request.getNickname());
 
         return UpdateNicknameDto.Response.fromUserEntity(userEntity);
+    }
+
+    @org.springframework.transaction.annotation.Transactional(readOnly = true)
+    public UserEntity findUser(Long memberId) {
+        return userRepository.findById(memberId)
+            .orElseThrow(() -> new CustomUserException(UserErrorCode.USER_NOT_FOUND));
+    }
+
+    @org.springframework.transaction.annotation.Transactional(readOnly = true)
+    public UserEntity getUserByUsername(String username) {
+        return userRepository.findByUsernameOrThrow(username);
     }
 
     public DeleteUserDto.Response deleteUser(PrincipalDetails principalDetails) {
