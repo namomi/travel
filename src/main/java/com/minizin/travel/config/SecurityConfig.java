@@ -113,7 +113,8 @@ public class SecurityConfig {
                     auth.requestMatchers("/", "/auth/**", "/mails/auth-code/**",
                                     "/users/find-id", "/users/find-password", "/tour/**",
                                     "plans/others/**", "plans/popular/week",
-                                    "/swagger-ui/**", "/v3/api-docs/**")
+                                    "/swagger-ui/**", "/v3/api-docs/**",
+                                    "/ws/**")
                             .permitAll()
                             .anyRequest().authenticated();
                 });
