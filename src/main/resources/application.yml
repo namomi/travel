@@ -4,19 +4,19 @@ spring:
 
   datasource:
     url: jdbc:mariadb://localhost:3306/travel
-    username: root
-    password: 1q!1q!
+    username: ${USERNAME}
+    password: ${PASSWORD}
     driver-class-name: org.mariadb.jdbc.Driver
 
   jpa:
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MariaDBDialect
         format_sql: true
+        show_sql: true
 
 
   data:
@@ -27,11 +27,11 @@ spring:
   mail:
     host: smtp.naver.com
     port: 465
-    username: ENC(VjnM+wDg8lmtHcsk8QE9ECyZJYbH6R+5t5WyYDnFnWYNcb6Mw3yH0ksvC/MUed2laFNHUTlkIP/JHcHfvx8H0Q==)
-    password: ENC(CKqFnC3DcwpqaKq0jBK/xhV/gKlKk/iyKVGvnya9ci/cPhvn3XMDvXHcGBNKYYbl)
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
 
   jwt:
-    secret: vmfhaltmskdlstkfkdgodyroqkfwkdbalroqkfwkdbalaaaaaaaaaaaaaaaabbbbb
+    secret: ${JWT_SECRET}
 
   logging:
     level:
@@ -60,5 +60,9 @@ server:
   forward-headers-strategy: framework
 
 api-tour:
-  serviceKey_De: K9eWaIkQyqUUDZPWH+jI2Br1awNS1WaksaOZ6EiUbWTEzpVBeXnhTuPjni4n6auCsAUANYZ5o3Q89TF0sFU4bA==
-  serviceKey_En: K9eWaIkQyqUUDZPWH%2BjI2Br1awNS1WaksaOZ6EiUbWTEzpVBeXnhTuPjni4n6auCsAUANYZ5o3Q89TF0sFU4bA%3D%3D
+  serviceKey_De: ${SERVICE_KEY_DE}
+  serviceKey_En: ${SERVICE_KEY_EN}
+
+jasypt:
+  encryptor:
+    password: ${JASYPTPW}
